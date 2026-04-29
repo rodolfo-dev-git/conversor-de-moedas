@@ -12,8 +12,9 @@ function convertValues() {
 
     const dolarToday = 5.02;             //Valor Ficticio
     const euroToday = 5.85;             //Valor Ficticio
+    const bitToday = 380146;             //Valor Ficticio
 
-   
+
     if (currencySelect.value == "dolar") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
@@ -25,15 +26,41 @@ function convertValues() {
             style: "currency",
             currency: "EUR"
         }).format(inputCurrencyValue / euroToday);
-
     }
+    if (currencySelect.value == "bitcoin") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "BTC"
+        }).format(inputCurrencyValue / bitToday);
+    }
+
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     }).format(inputCurrencyValue);
 
-
 }
 
+function changeCurrency() {
+    const currencyName = document.getElementById("currency-name");
+    const currencyImage = document.querySelector(".currency-img");
+
+    if (currencySelect.value == "dolar") {
+        currencyName.innerHTML = "Dólar americano";
+        currencyImage.src = "./assets/img/usa.png";
+    }
+    if (currencySelect.value == "euro") {
+        currencyName.innerHTML = "Euro";
+        currencyImage.src = "./assets/img/uniao.png";
+    }
+    if (currencySelect.value == "bitcoin") {
+        currencyName.innerHTML = "Bitcoin";
+        currencyImage.src = "./assets/img/bitcoin.png";
+    }
+
+    convertValues();
+}
+
+currencySelect.addEventListener("change", changeCurrency);
 convertButton.addEventListener("click", convertValues);
