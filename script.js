@@ -44,7 +44,7 @@ function convertValues() {
         }).format(inputCurrencyValue / pesoaToday);
     }
     if (currencySelect.value == "bitcoin") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BTC"
         }).format(inputCurrencyValue / bitToday);
