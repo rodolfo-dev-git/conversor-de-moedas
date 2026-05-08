@@ -42,12 +42,14 @@ const convertValues = async () => {
             currency: "ARS"
         }).format(inputCurrencyValue / pesoaToday);
     }
-    if (currencySelect.value == "bitcoin") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BTC"
-        }).format(inputCurrencyValue / bitToday);
-    }
+if (currencySelect.value == "bitcoin") {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 7,
+        maximumFractionDigits: 7
+    }).format(inputCurrencyValue / bitToday);
+}
 
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
